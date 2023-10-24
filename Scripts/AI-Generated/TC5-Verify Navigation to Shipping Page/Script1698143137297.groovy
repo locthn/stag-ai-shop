@@ -15,7 +15,7 @@ WebUI.navigateToUrl(GlobalVariable.application_domain + '')
 
 'step 2: Add visual checkpoint at Page shipping'
 
-WebUI.takeFullPageScreenshotAsCheckpoint('TC5-Verify Successful Navigation to Shipping Page_visual_checkpoint')
+WebUI.takeFullPageScreenshotAsCheckpoint('TC5-Verify Navigation to Shipping Page_visual_checkpoint')
 
 'Terminate test session: Close browser'
 

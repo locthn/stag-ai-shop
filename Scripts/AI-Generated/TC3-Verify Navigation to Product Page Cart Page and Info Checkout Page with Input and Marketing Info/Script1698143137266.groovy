@@ -1,7 +1,7 @@
-import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.model.FailureHandling
 import internal.GlobalVariable as GlobalVariable
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 'Initialize test session: Open browser and set view port'
 
@@ -71,7 +71,7 @@ WebUI.verifyMatch(WebUI.getUrl(), '.*/product/.*(?:#.*)?(?:\\?.*)?$', true)
 
 WebUI.enhancedClick(testObj)
 
-'step 6: At Page cart click on button object --> navigate to Page checkout payment'
+'step 6: At Page cart click on button object --> navigate to Page checkout info'
 
 testObj = findTestObject('Object Repository/Page_cart/button_object')
 
@@ -85,9 +85,37 @@ WebUI.verifyMatch(WebUI.getUrl(), '.*/cart(?:#.*)?(?:\\?.*)?$', true)
 
 WebUI.enhancedClick(testObj)
 
-'step 7: Add visual checkpoint at Page checkout payment'
+'step 7: At Page checkout info input on input r0'
 
-WebUI.takeFullPageScreenshotAsCheckpoint('TC2-Verify Successful Navigation to Checkout Payment Page after Adding Product to Cart_visual_checkpoint')
+testObj = findTestObject('Object Repository/Page_checkout_info/input_r0')
+
+WebUI.delay(3)
+
+WebUI.takeScreenshot()
+
+WebUI.verifyElementPresent(testObj, 20, FailureHandling.CONTINUE_ON_FAILURE)
+
+WebUI.verifyMatch(WebUI.getUrl(), '.*/checkout/info(?:#.*)?(?:\\?.*)?$', true)
+
+WebUI.setText(testObj, var_1_input_r0)
+
+'step 8: At Page checkout info click on input receive marketing info'
+
+testObj = findTestObject('Object Repository/Page_checkout_info/input_receive_marketing_info')
+
+WebUI.delay(3)
+
+WebUI.takeScreenshot()
+
+WebUI.verifyElementPresent(testObj, 20, FailureHandling.CONTINUE_ON_FAILURE)
+
+WebUI.verifyMatch(WebUI.getUrl(), '.*/checkout/info(?:#.*)?(?:\\?.*)?$', true)
+
+WebUI.enhancedClick(testObj)
+
+'step 9: Add visual checkpoint at Page checkout info'
+
+WebUI.takeFullPageScreenshotAsCheckpoint('TC3-Verify Navigation to Product Page Cart Page and Info Checkout Page with Input and Marketing Info_visual_checkpoint')
 
 'Terminate test session: Close browser'
 
